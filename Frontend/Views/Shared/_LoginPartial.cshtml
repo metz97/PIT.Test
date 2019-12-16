@@ -1,0 +1,29 @@
+﻿
+@if (ViewBag.Username != null && ViewBag.Username != String.Empty)
+{
+    using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#" class="nav-link">Hello @ViewBag.Username !</a>
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Home", routeValues: null, htmlAttributes: new { id = "registerLink", @class="nav-link" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Home", routeValues: null, htmlAttributes: new { id = "loginLink", @class="nav-link" })</li>
+    </ul>
+}
+@section script{
+    <script>
+        document.getElementById("logoutForm").classList.add('nav-link');
+    </script>
+    }

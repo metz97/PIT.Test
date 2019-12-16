@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Frontend.Models.CarModels>  
+
+
+@{
+    ViewBag.Title = "Car";
+}
+
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <img src="@Url.Action("GetImages","Home", new { id = item.Id })" alt="@item.Name" class="img-thumbnail">
+        }
+    </div>
+
